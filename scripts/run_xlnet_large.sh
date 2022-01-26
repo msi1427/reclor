@@ -1,6 +1,7 @@
 export RECLOR_DIR=reclor_data
 export TASK_NAME=reclor
 export MODEL_NAME=xlnet-large-cased
+output_dir=$1
 
 CUDA_VISIBLE_DEVICES=0 python run_multiple_choice.py \
     --model_type xlnet \
@@ -16,7 +17,7 @@ CUDA_VISIBLE_DEVICES=0 python run_multiple_choice.py \
     --gradient_accumulation_steps 24 \
     --learning_rate 2e-5 \
     --num_train_epochs 10.0 \
-    --output_dir Checkpoints/$TASK_NAME/${MODEL_NAME} \
+    --output_dir ${output_dir}/Checkpoints/$TASK_NAME/${MODEL_NAME} \
     --fp16 \
     --logging_steps 200 \
     --save_steps 200 \
